@@ -5,7 +5,7 @@
                         <td><form action="buy.php" method="post">
                             <fieldset>
                                 <input name="shares" type="text" placeholder="No. of Shares"/></td>
-                        <td><?php echo($stock["cprice"])?></td></tr>
+                        <td>$<?php echo($stock["cprice"])?></td></tr>
         </table>
         <p>After clicking "I agree" this action cannot be undone.</p>
         

@@ -3,7 +3,7 @@
                         <tr class="table-row">
                         <td><?php echo(strtoupper($stock["symbol"]))?></td>
                         <td><?php echo($stock["name"])?></td>
-                        <td><?php echo(number_format($stock["price"], 2,'.',''))?></td>
+                        <td>$<?php echo(number_format($stock["price"], 2,'.',''))?></td>
                         <td><form action="buy.php" method="post">
                                 <fieldset>
                                         <input type="hidden" name="symbol" value="<?=$stock['symbol']?>"/>

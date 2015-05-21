@@ -37,7 +37,7 @@
 		$reseturl = $_SERVER['HTTP_HOST']."/reset.php?reset=".$resethash;
 		$message  = "Your username is  ".$username.".\n\r"."Please visit the following url to reset your dTrade password"."\n\r".$reseturl."\n\r";
 		$subject  = "dTrade Password Reset";
-		$header   = "From: no-reply@nanidoko.com\n\r";
+		$header   = "From: no-reply@dtrade.douglasmitchell.net\n\r";
 		mail($email, $subject, $message, $header);
 		
 		// Display message to check e-mail

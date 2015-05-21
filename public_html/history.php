@@ -22,8 +22,8 @@
         $buysell = $row['buysell'];
         $symbol = $row['symbol'];
         $shares = $row['shares'];
-        $price = number_format($row['price'],2,'.',',');
-        $total = number_format($price*$shares,2,'.',',');
+        $price = number_format($row['price'],2,'.','');
+        $total = number_format($price*$shares,2,'.','');
     
         require("../templates/history_table.php");
     }

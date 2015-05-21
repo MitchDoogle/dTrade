@@ -40,8 +40,15 @@
         }
         
         // insert new user into database
-        $rows = query("INSERT INTO users (username, email, hash, cash) VALUES(?, ?, ?, 10000.00)", $_POST["username"], $_POST["email"], crypt($_POST["password"],'dfji8d7df3$sf0'));
-        
+        if (!empty($_POST["email"]))
+        {
+            $rows = query("INSERT INTO users (username, email, hash, cash) VALUES(?, ?, ?, 10000.00)", $_POST["username"], $_POST["email"], crypt($_POST["password"],'dfji8d7df3$sf0'));
+        }
+        else
+        {
+            $rows = query("INSERT INTO users (username, hash, cash) VALUES(?, ?, 10000.00)", $_POST["username"], crypt($_POST["password"],'dfji8d7df3$sf0'));
+        }
+
         if ($rows === false)
         {
             apologize("There is already an account associated with that username or e-mail.");
@@ -59,43 +66,11 @@
             $subject   = "*dTrade* registration";
             $message   = "You have been registered to *dTrade* with the username " . $user;
             $headers   = array();
-            $headers[] = "From: dTrade <no-reply@nanidoko.com>";
+            $headers[] = "From: dTrade <no-reply@dtrade.douglasmitchell.net>";
 
             mail($email, $subject, $message, implode("\r\n", $headers));
         }
-        // from https://manual.cs50.net/mail/
-        // TODO switch this to a function-
-       /* require_once("libphp-phpmailer/class.phpmailer.php");
         
-            $email     = $_POST["email"];
-            $user      = $_POST['username'];
-            $subject   = "*dTrade* registration";
-            $message   = "You have been registered to *dTrade* with the username " . $user;
-            
-            // instantiate mailer
-            $mail = new PHPMailer();
-
-            // use your ISP's SMTP server (e.g., smtp.fas.harvard.edu if on campus or smtp.comcast.net if off campus and your ISP is Comcast)
-            $mail->IsSMTP();
-            $mail->Host = "smtp.spmode.ne.jp"; // docomo smtp.spmode.ne.jp home mail.asahi-net.or.jp
-
-            // set From:
-            $mail->SetFrom("no-reply@dtrade.com");
-
-            // set To:
-            $mail->AddAddress($email);
-
-            // set Subject:
-            $mail->Subject = $subject;
-
-            // set body
-            $mail->Body = $message;
-
-            // send mail
-            if ($mail->Send() === false)
-                die($mail->ErrorInfo . "\n");*/
-                    
-        // log in and redirect to index.php
         $_SESSION["id"] = $id;
         
         redirect("/");

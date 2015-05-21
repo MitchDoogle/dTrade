@@ -6,7 +6,7 @@
                             <fieldset>
                                 <input name="shares" type="text" placeholder="<?php echo($stock['shares'])?>"/></td>
                         
-                        <td><?php echo($stock["cprice"])?></td></tr>
+                        <td>$<?php echo($stock["cprice"])?></td></tr>
         </table>
         <p>After clicking "I agree" this action cannot be undone.</p>
             <div class="form-group">

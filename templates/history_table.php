@@ -3,8 +3,8 @@
         <td><?=$buysell?></td>
         <td><?=$symbol?></td>
         <td><?=$shares?></td>
-        <td><?=$price?></td>
-        <td><?=$total?></td>
+        <td>$<?=$price?></td>
+        <td>$<?=$total?></td>
     </tr>
 
 
